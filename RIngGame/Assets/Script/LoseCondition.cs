@@ -9,6 +9,7 @@ public class LoseCondition : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             FindAnyObjectByType<GameManager>().GameOver = true;
+            FindAnyObjectByType<UIAnimation>().GameOverPanelIntro();
         }
     }
 }

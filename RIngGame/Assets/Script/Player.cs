@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
         if(gm.GameOver)
         {
             rb.bodyType = RigidbodyType2D.Static;
-            gm.StopScreen = true;
             return;
         }
 
@@ -35,6 +34,7 @@ public class Player : MonoBehaviour
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
+                    FindAnyObjectByType<UIScore>().IncrementScore();
                     rb.AddForce(jumpForce);
                     SpeedController();
                 }
