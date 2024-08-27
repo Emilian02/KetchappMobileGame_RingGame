@@ -32,19 +32,16 @@ public class UIAnimation : MonoBehaviour
     [SerializeField]
     RectTransform score;
 
-    bool startIsActive;
 
     void Start()
     {
         DOTween.SetTweensCapacity(500, 50);
-        startIsActive = true;
     }
 
 
     public async void StartButton()
     {
         await StartPanelOutro();
-        startIsActive = false;
         startScreen.SetActive(false);
         scoreScreen.SetActive(true);
     }
