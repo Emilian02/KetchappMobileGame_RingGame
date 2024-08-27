@@ -8,16 +8,22 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField] GameObject[] pipePrefabs;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float spawnInterval;
+    [SerializeField] GameManager gm;
 
     private GameObject lastPipe;
 
     void Start()
     {
-        InvokeRepeating("SpawnPipe", 0f, spawnInterval);
+        InvokeRepeating("SpawnPipe", 1f, spawnInterval);
     }
 
     void SpawnPipe()
     {
+        if(gm.GameOver)
+        {
+            return;
+        }
+
         // Randomly select a pipe prefab
         int randomIndex = Random.Range(0, pipePrefabs.Length);
         GameObject selectedPipe = pipePrefabs[randomIndex];
@@ -26,6 +32,7 @@ public class PipeSpawner : MonoBehaviour
         if (lastPipe == null)
         {
             spawnPosition = spawnPoint.position;
+            selectedPipe = pipePrefabs[0];
         }
         else
         {

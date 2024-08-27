@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject spawner;
     public bool GameOver;
     public bool StartScreen;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public void StartButton()
     {
         StartScreen = false;
+        spawner.SetActive(true);
     }
 
     public void RestartButton()
