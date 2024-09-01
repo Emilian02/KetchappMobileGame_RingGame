@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 public class UIAnimation : MonoBehaviour
 {
+    [SerializeField]
+    GameManager gm;
     [Header("Start Screen Variables")]
     [SerializeField]
     GameObject startScreen;
@@ -26,6 +28,11 @@ public class UIAnimation : MonoBehaviour
     RectTransform GameOverTitle;
     [SerializeField]
     RectTransform restartButton;
+    [Header("Ad Button")]
+    [SerializeField]
+    GameObject adPanel;
+    [SerializeField]
+    RectTransform adButton;
     [Header("ScoreUi")]
     [SerializeField]
     GameObject scoreScreen;
@@ -54,10 +61,25 @@ public class UIAnimation : MonoBehaviour
 
     public void GameOverPanelIntro()
     {
+        gm.Playing = false;
+        if (!gm.HasPlayAd)
+        {
+            adPanel.SetActive(true);
+            adButton.DOAnchorPosY(-620, tweenDuration);
+        }
         gameOverPanel.SetActive(true);
-        GameOverTitle.DOAnchorPosY(894, tweenDuration);
-        restartButton.DOAnchorPosY(-887, tweenDuration);
-        score.DOAnchorPos(new Vector2(-291, -516), tweenDuration);
+        GameOverTitle.DOAnchorPosY(735, tweenDuration);
+        restartButton.DOAnchorPosY(-870, tweenDuration);
+        score.DOAnchorPos(new Vector2(-240, -504), tweenDuration);
     }
+
+    public void GameOverPanelOutro()
+    {
+        GameOverTitle.DOAnchorPosY(1000, tweenDuration);
+        restartButton.DOAnchorPosY(-1000, tweenDuration);
+        score.DOAnchorPos(new Vector2(0, 0), tweenDuration);
+        adButton.DOAnchorPosY(-1000, tweenDuration);
+    }
+
 
 }

@@ -15,6 +15,12 @@ public class UIScore : MonoBehaviour
         UpDateDisplay();
     }
 
+    public void DiamondIncrement(int value)
+    {
+        score += value;
+        UpDateDisplay();
+    }
+
     void UpDateDisplay()
     {
         scoreText.text = score.ToString();

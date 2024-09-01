@@ -8,18 +8,20 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject spawner;
     public bool GameOver;
-    public bool StartScreen;
+    public bool Playing;
+    public bool HasPlayAd;
 
     void Awake()
     {
         GameOver = false;
-        StartScreen = true;
+        Playing = false;
+        HasPlayAd = false;
     }
 
 
     public void StartButton()
     {
-        StartScreen = false;
+        Playing = true;
         spawner.SetActive(true);
     }
 

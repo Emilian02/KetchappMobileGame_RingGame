@@ -6,11 +6,14 @@ using UnityEngine;
 public class PipeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] pipePrefabs;
+    [SerializeField] GameObject diamond;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float spawnInterval;
+    [SerializeField] float diamondSpawnChance = 0.75f;
     [SerializeField] GameManager gm;
 
     private GameObject lastPipe;
+    int pipeCounter = 0;
 
     void Start()
     {
@@ -45,5 +48,17 @@ public class PipeSpawner : MonoBehaviour
 
         // Spawn the selected pipe
         lastPipe = Instantiate(selectedPipe, spawnPosition, selectedPipe.transform.rotation);
+
+        pipeCounter++;
+
+        if (pipeCounter >= 2)
+        {
+            pipeCounter = 0;
+            if (Random.value < diamondSpawnChance)
+            {
+                Vector3 diamondPosition = new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z);
+                Instantiate(diamond, diamondPosition, Quaternion.identity);
+            }
+        }
     }
 }

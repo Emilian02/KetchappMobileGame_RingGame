@@ -10,6 +10,7 @@ public class LoseCondition : MonoBehaviour
         {
             FindAnyObjectByType<GameManager>().GameOver = true;
             FindAnyObjectByType<UIAnimation>().GameOverPanelIntro();
+            FindAnyObjectByType<Player>().SetLastPipe(gameObject);
         }
     }
 }
