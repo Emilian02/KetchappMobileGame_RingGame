@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartButton()
     {
+        FindAnyObjectByType<UIScore>().CheckHighScore();
         SceneManager.LoadScene("Game");
     }
 }

@@ -38,6 +38,10 @@ public class UIAnimation : MonoBehaviour
     GameObject scoreScreen;
     [SerializeField]
     RectTransform score;
+    [SerializeField]
+    GameObject highScoreScreen;
+    [SerializeField]
+    RectTransform highScore;
 
 
     void Start()
@@ -51,11 +55,13 @@ public class UIAnimation : MonoBehaviour
         await StartPanelOutro();
         startScreen.SetActive(false);
         scoreScreen.SetActive(true);
+        highScoreScreen.SetActive(false);
     }
 
     async Task StartPanelOutro()
     {
         title.DOAnchorPosY(750, tweenDuration);
+        highScore.DOAnchorPosY(750, tweenDuration);
         await startButton.DOAnchorPosY(-500, tweenDuration).AsyncWaitForCompletion();
     }
 
