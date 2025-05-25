@@ -60,7 +60,7 @@ public class PipeSpawner : MonoBehaviour
         if (mirrorCounter == mirrorInterval - 1)
         {
             randomEvent = Random.value;
-            if (randomEvent < 0.8f) 
+            if (randomEvent < 0.5f) 
             {
                 StartCoroutine(MirrorWarningCoroutine());
             }

@@ -71,12 +71,12 @@ public class UIAnimation : MonoBehaviour
         if (!gm.HasPlayAd)
         {
             adPanel.SetActive(true);
-            adButton.DOAnchorPosY(-620, tweenDuration);
+            adButton.DOAnchorPosY(-400, tweenDuration);
         }
         gameOverPanel.SetActive(true);
-        GameOverTitle.DOAnchorPosY(735, tweenDuration);
-        restartButton.DOAnchorPosY(-870, tweenDuration);
-        score.DOAnchorPos(new Vector2(-240, -504), tweenDuration);
+        GameOverTitle.DOAnchorPosY(610, tweenDuration);
+        restartButton.DOAnchorPosY(-650, tweenDuration);
+        score.DOAnchorPos(new Vector2(-180, -450), tweenDuration);
     }
 
     public void GameOverPanelOutro()
